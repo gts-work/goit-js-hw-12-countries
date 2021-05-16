@@ -1,0 +1,12 @@
+.timer {
+    display: flex;
+    text-align: center;
+    font-size: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field {
+    margin-left: auto;
+    margin-right: auto;
+}

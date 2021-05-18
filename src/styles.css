@@ -1,12 +1,15 @@
-.timer {
-    display: flex;
-    text-align: center;
-    font-size: 60px;
-    margin-left: auto;
-    margin-right: auto;
+.search {
+    margin-top: 100px;
 }
 
-.field {
-    margin-left: auto;
-    margin-right: auto;
+.countrys {
+    margin-top: 50px;
+}
+
+.card-title {
+    margin-bottom: 20px;
+}
+
+.flag-img {
+    width: 300%;
 }

@@ -16,26 +16,31 @@ const countryApiService = new CountryApiService();
 inputButton.addEventListener("input", debounce(onInputSearch, 500));
 
 function onInputSearch(e) {
-    const countryQuery = e.target.value;
-    countryApiService.name = countryQuery;
+    const countryQuery = e.target.value.trim();
 
-    countryApiService.fetchCountrys().then((countrys) => {
-        const countrysLength = countrys.length;
+    if (countryQuery) {
+        countryApiService.name = countryQuery;
+        countryApiService.fetchCountrys().then((countrys) => {
+            const countrysLength = countrys.length;
 
-        if (countrys.status === 404) {
-            const title = "Oops!";
-            const text = "Invalid query.";
-            showErrorMessage(title, text);
-        } else if (countrysLength > 10) {
-            const title = "Oops!";
-            const text = "To many matches found. Enter a more specific query.";
-            const notice = showErrorMessage(title, text);
-        } else if (countrysLength == 1) {
-            appendItemCountryMarkup(countrys);
-        } else {
-            appendListCountrysMarkup(countrys.map((country) => country.name));
-        }
-    });
+            if (countrys.status === 404) {
+                const title = "Oops!";
+                const text = "Invalid query.";
+                showErrorMessage(title, text);
+            } else if (countrysLength > 10) {
+                const title = "Oops!";
+                const text =
+                    "To many matches found. Enter a more specific query.";
+                const notice = showErrorMessage(title, text);
+            } else if (countrysLength == 1) {
+                appendItemCountryMarkup(countrys);
+            } else {
+                appendListCountrysMarkup(
+                    countrys.map((country) => country.name)
+                );
+            }
+        });
+    }
 }
 
 function appendItemCountryMarkup(countrys) {
